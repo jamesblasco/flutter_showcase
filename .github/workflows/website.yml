@@ -1,0 +1,34 @@
+name: Flutter Web
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build Web
+    env:
+      my_secret: ${{secrets.commit_secret}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'master'
+      - run: |
+          cd example
+          flutter config --enable-web
+          flutter pub get
+      - run: |
+         cd example
+         flutter pub run flutter_showcase build
+      - run: |
+          cd example/build/web_showcase
+          git init
+          git config --global user.email git@jaimeblasco.com
+          git config --global user.name jamesblasco
+          git status
+          git remote add origin https://${{secrets.commit_secret}}@github.com/jamesblasco/flutter_showcase.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "Update web"
+          git push origin gh-pages -f
