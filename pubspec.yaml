@@ -1,0 +1,38 @@
+name: flutter_showcase
+description: Showcase your flutter project
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^5.4.2
+  font_awesome_flutter: ^8.8.1
+  fluid_layout:
+  equatable: ^1.1.1
+  flutter_inner_drawer: "^0.5.5"
+
+dev_dependencies:
+  test: any
+  yaml: ^2.2.0
+  flutter_test:
+    sdk: flutter
+  flutter_tools:
+    sdk: flutter
+  ozzie:
+  flutter_driver:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  assets:
+    - assets/
+
