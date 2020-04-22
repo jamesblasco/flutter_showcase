@@ -18,7 +18,7 @@ Flutter Showcase can have different appareances, actionable links and social met
 but the goal is to provide multiple options to share your project so you can choose the one that 
 fits for you.
 
-Check the [web demo](https://jamesblasco.github.io/flutter_showcase/)
+Check the [web demo](https://jamesblasco.github.io/flutter_showcase/) with the awesome vignettes from [@gskinnerTeam](https://github.com/gskinnerTeam/flutter_vignettes)
 
 ## Getting Started
 
