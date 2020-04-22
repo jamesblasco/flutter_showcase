@@ -39,9 +39,14 @@ MaterialApp(
 
 3. Run `Flutter build web` 
 
-4. Publish the web project
-
-That easy? **Yess!!!**
+4. Publish the web project:
+  See this cool articles on how to publish your app
+  
+  - [Firebase](https://medium.com/flutter/must-try-use-firebase-to-host-your-flutter-app-on-the-web-852ee533a469)
+  - [Github - Automated](https://medium.com/flutter-community/flutter-web-github-actions-github-pages-dec8f308542a)
+  
+  
+## That easy? **Yess!!!**
 
 Keep reading for more detailed features
 
