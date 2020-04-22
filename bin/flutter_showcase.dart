@@ -15,7 +15,7 @@ Future<void> main(List<String> args) async {
   parser.addOption('description');
   parser.addOption('FLUTTER_WEB_USE_SKIA');
   final results = parser.parse(args);
-  _useSkia = results['FLUTTER_WEB_USE_SKIA'] ?? true;
+  _useSkia = results['FLUTTER_WEB_USE_SKIA'] != "false" ?? true;
   /*final Status status = globals.logger.startProgress('Compiling profile for the Web...', timeout: null);*/
 
   final socialMetadata = generateMetadata();

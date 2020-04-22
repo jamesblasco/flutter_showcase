@@ -1,6 +1,6 @@
 name: flutter_showcase
-description: Showcase your flutter project. Add showcase widget, publish and share your web app
-version: 0.0.6
+description: A simple, fast and easy way to share you flutter project or mockups with the world.
+version: 0.0.7
 homepage: https://github.com/jamesblasco/flutter_showcase
 
 environment:
