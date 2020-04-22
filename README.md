@@ -131,7 +131,7 @@ Showcase(
 
 ##  Autogenerate social media tags - Experimental
 
-CAUTION! This feature is still experimental;
+CAUTION! This feature is still experimental; It generates a new index.html, if you add your own js scrips (as Firebase) it won't work for now.
 
 This projects aims to generate social media tags title, description, url and image for your Flutter project so
 you don't have to do it. 
@@ -139,7 +139,8 @@ you don't have to do it.
 1. A WebDriver is needed for making a screenshot of the project
   For the experimental version I am using `ChromeDriver`. 
   
-  Quick instalation:
+  Github Actions have `ChromeDriver` installed by default 🎉
+  Local instalation:
   - Mac users with Homebrew installed: `brew tap homebrew/cask && brew cask install chromedriver`
   - Debian based Linux distros: `sudo apt-get install chromium-chromedriver`
   - Windows users with Chocolatey installed: `choco install chromedriver`
@@ -154,4 +155,6 @@ showcase:
   url: https://showcase-custom-web.com
 ```
 3. Instead of `flutter build web` we will use `flutter pub run flutter_showcase build` that will generate the web project in the folder in build/web_showcase
+
+
 
