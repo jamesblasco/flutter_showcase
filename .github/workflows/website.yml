@@ -25,7 +25,7 @@ jobs:
       - name: Build Showcase Example    
         run: |
          cd example
-         flutter pub run flutter_showcase build
+         flutter pub run flutter_showcase build --FLUTTER_WEB_USE_SKIA="false"
       - name: Upload showcase to Github Pages    
         run: |
           cd example/build/web_showcase
