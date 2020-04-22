@@ -12,10 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install Flutter
-        if: steps.cache-flutter.outputs.cache-hit != 'true'
         run: |
           git clone -b master https://github.com/flutter/flutter.git
-          cd ../
           echo "::add-path::$GITHUB_WORKSPACE/flutter/bin"
           echo "::add-path::$GITHUB_WORKSPACE/flutter/bin/cache/dart-sdk/bin"
           ./flutter/bin/flutter doctor
