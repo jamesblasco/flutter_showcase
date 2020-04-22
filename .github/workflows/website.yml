@@ -14,12 +14,11 @@ jobs:
       - name: Install Flutter
         if: steps.cache-flutter.outputs.cache-hit != 'true'
         run: |
-          cd src/
           git clone -b master https://github.com/flutter/flutter.git
           cd ../
-          echo "::add-path::$GITHUB_WORKSPACE/src/flutter/bin"
-          echo "::add-path::$GITHUB_WORKSPACE/src/flutter/bin/cache/dart-sdk/bin"
-          ./src/flutter/bin/flutter doctor
+          echo "::add-path::$GITHUB_WORKSPACE/flutter/bin"
+          echo "::add-path::$GITHUB_WORKSPACE/flutter/bin/cache/dart-sdk/bin"
+          ./flutter/bin/flutter doctor
       - name: Get packages    
         run: |
           cd example
