@@ -20,7 +20,7 @@ jobs:
           flutter pub get
       - run: |
          cd example
-         flutter pub run flutter_showcase build
+         flutter pub run flutter_showcase build --FLUTTER_WEB_USE_SKIA="false"
       - run: |
           cd example/build/web_showcase
           git init
