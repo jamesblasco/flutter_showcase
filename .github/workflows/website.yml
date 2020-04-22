@@ -30,7 +30,7 @@ jobs:
          cd example
          flutter pub run flutter_showcase build
       - name: Upload showcase to Github Pages    
-      - run: |
+        run: |
           cd example/build/web_showcase
           git init
           git config --global user.email git@jaimeblasco.com
