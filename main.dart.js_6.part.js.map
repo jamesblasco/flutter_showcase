@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "engine": "v2",
+  "file": "main.dart.js_6.part.js",
+  "sourceRoot": "",
+  "sources": ["../../../../flutter/packages/flutter/lib/src/material/icon_button.dart","../../../../flutter/packages/flutter/lib/src/widgets/basic.dart","../../../../flutter/packages/flutter/lib/src/widgets/icon_theme_data.dart","../../../../flutter/packages/flutter/lib/src/painting/edge_insets.dart"],
+  "names": ["IconButton","IconButton.build","","vertical"],
+  "mappings": "A;0DA0IQA;uDAwBcA,C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAsJbC,YAEyBA,qCAOsCA,MAatDA,KC4yDhBA,SDnzD6CA,MAJuBA,KC8wC9DA,UDrwCSA,ICgsDTA,aAvRAA,UDp6CeA,OACMA,MAKRA,GE7TbA,UFmSaA,wBAiCbA;AAAJA,WACWA;AAgByBA;GAAYA;AACZA;GAAYA;AACJA;GAAYA;AAClBA;AAb/BA,GAa2CA;AAblDA,eAGSA,qDAIEA,gCASwBA,CAzCtBA,UG9QQA,CH8QRA,cG9QeA,CH8QfA,qDA8CfA,C",
+  "x_org_dartlang_dart2js": {
+    "minified_names": {
+      "global": "",
+      "instance": ""
+    },
+    "frames": "4pBAyUoBES;WAEPAU;IAEEAa;AAGEAU;gBAGGAU;uOAkCuCCC;cAAAAC;"
+  }
+}

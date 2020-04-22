@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "engine": "v2",
+  "file": "main.dart.js_9.part.js",
+  "sourceRoot": "",
+  "sources": ["../../../../flutter/packages/flutter/lib/src/widgets/implicit_animations.dart","../../../../flutter/packages/flutter/lib/src/widgets/framework.dart","../../../../flutter/packages/flutter/lib/src/animation/animation.dart","../../../../flutter/packages/flutter/lib/src/animation/tween.dart"],
+  "names": ["AnimatedOpacity","AnimatedOpacity.createState","State","_AnimatedOpacityState.forEachTween","_AnimatedOpacityState.didUpdateTweens","Animatable.animate","Animation.drive","_AnimatedOpacityState.build","_AnimatedOpacityState.forEachTween.<anonymous function>","","_AnimatedOpacityState","ImplicitlyAnimatedWidgetState","_ImplicitlyAnimatedWidgetState&State&SingleTickerProviderStateMixin","_debugLifecycleState","widget","animation","drive","animate"],
+  "mappings": "A;0DAuxCQA;yCASsBA,eATtBA,AAS8DA,C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAmChEC;GATkBA,WAAiBA,sBCrSgBC,GDqSOD,C;;GAczDE,YACoGA,IAAvGA,SAAWA,SAAQA,OC3TLA,ED2TsBA,GAASA,YAC/CA,C;GAGKC,qBAx+B8BA,SAy+BGA;CAAhBA;AErqCMA;CAAnBA;AC3FTC,IHgwCED,gBG7wCOE,OAaTD,cHiwCAD,C;EAGOG,YACEA,UACIA;AADXA,mBCrUcA,EDuUEA,KAGlBA,C;;AGjoCAC;GHknC+CA,YAAmBA,gBAA2BA,iBAAUA,C",
+  "x_org_dartlang_dart2js": {
+    "minified_names": {
+      "global": "",
+      "instance": ""
+    },
+    "frames": "srBA0zCyCSoB;iCAAAAAASnCAAAr+BSAAAAAAACurB0CIG,A,A,A,A;gEDoTxBCE;0CAKTCS;cAAACoBErqCbCACxGARI,A,A;gBH6wCaOAErqCbCOCxGARc,A,A;iDHoxCEKE;gCAZuDLoB;"
+  }
+}

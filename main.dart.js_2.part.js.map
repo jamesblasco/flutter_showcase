@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "engine": "v2",
+  "file": "main.dart.js_2.part.js",
+  "sourceRoot": "",
+  "sources": ["../../../../flutter/packages/flutter/lib/src/painting/fractional_offset.dart"],
+  "names": ["FractionalOffset","FractionalOffset.-","FractionalOffset.+","FractionalOffset.*","FractionalOffset.toString","dx","dy"],
+  "mappings": "A;0DAyDQA;6CAGmCA,C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA4EtBC,cAEFA,wBAAbA,mBAGJA;AADEA,OAAOA,UA1CSA,uBAQAA,kBAmClBA,C;EAGmBC,cAEFA,wBAAbA,mBAGJA;AADEA,OAAOA,UAlDSA,uBAQAA,kBA2ClBA,C;GAQ0BC,cACxBA,OAAOA,UA5DSA,eAQAA,UAqDlBA,C;EAkCOC,YACLA,0BAA2BA,YAhGXA,gBAiGWA,YAzFXA,cA0FlBA,C",
+  "x_org_dartlang_dart2js": {
+    "minified_names": {
+      "global": "",
+      "instance": ""
+    },
+    "frames": "2nBA4I4BKU;AAAgBAa;AAAICU;AAAgBAQ;gFAQpCDU;AAAgBAa;AAAICU;AAAgBAQ;qCAUpCDe;AAAYCU;uDAoCTDgB;YACACc;"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "engine": "v2",
+  "file": "main.dart.js_12.part.js",
+  "sourceRoot": "",
+  "sources": ["../../../../flutter/packages/flutter/lib/src/widgets/basic.dart","../../../../flutter/bin/cache/flutter_web_sdk/lib/ui/src/ui/geometry.dart"],
+  "names": ["Transform.translate","dx","dy"],
+  "mappings": "A;0DA6oCEA;iCAKyBA,MCvgCRA,IAKAA,0BD6/BjBA,AAQkCA,C",
+  "x_org_dartlang_dart2js": {
+    "minified_names": {
+      "global": "",
+      "instance": ""
+    },
+    "frames": "gOAkpCoDCI;AAAWC0B;"
+  }
+}
