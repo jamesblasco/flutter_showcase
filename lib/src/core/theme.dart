@@ -3,36 +3,63 @@ import 'package:flutter/material.dart';
 import 'package:flutter_showcase/flutter_showcase.dart';
 import 'package:flutter_showcase/src/frame/frame_theme.dart';
 
+/// An immutable theme for showcase projects
+///
 class TemplateThemeData {
-  final FlutterLogoColor flutterLogoColor;
-  final TextStyle titleTextStyle;
-  final TextStyle descriptionTextStyle;
-  final Color backgroundColor;
-  final ButtonThemeData buttonTheme;
+  /// Describes the contrast of the showcase page.
+  ///
   final Brightness brightness;
+
+  /// Background color of the showcase page
+  ///
+  final Color backgroundColor;
+
+  /// Defines the theme of the device frame
+  /// that wraps the app
+  ///
   final FrameThemeData frameTheme;
+
+  /// Defines Flutter logo appearance
+  /// Options: .original, .white, .dark
+  ///
+  final FlutterLogoColor flutterLogoColor;
+
+  /// Defines text style for the title
+  ///
+  final TextStyle titleTextStyle;
+
+  /// Defines text style for the description text
+  ///
+  final TextStyle descriptionTextStyle;
+
+  /// Defines button theme for the clickable share links
+  ///
+  final ButtonThemeData buttonTheme;
   final TextStyle buttonTextStyle;
   final IconThemeData buttonIconTheme;
 
-  factory TemplateThemeData(
-      {Brightness brightness,
-      FlutterLogoColor flutterLogoColor,
-      TextStyle titleTextStyle,
-      TextStyle descriptionTextStyle,
-      Color backgroundColor,
-      ButtonThemeData buttonTheme,
-      FrameThemeData frameTheme,
-        TextStyle buttonTextStyle,
-        IconThemeData buttonIconTheme,}) {
+  factory TemplateThemeData({
+    Brightness brightness,
+    FlutterLogoColor flutterLogoColor,
+    TextStyle titleTextStyle,
+    TextStyle descriptionTextStyle,
+    Color backgroundColor,
+    ButtonThemeData buttonTheme,
+    FrameThemeData frameTheme,
+    TextStyle buttonTextStyle,
+    IconThemeData buttonIconTheme,
+  }) {
     brightness ??= Brightness.light;
     final bool isDark = brightness == Brightness.dark;
     backgroundColor ??= isDark ? Colors.grey[850] : Colors.grey[50];
+    final textColor = isDark ? Colors.white : Colors.black;
     descriptionTextStyle =
-        TextStyle(color: Colors.black, height: 2, fontSize: 18)
-            .merge(descriptionTextStyle ?? TextStyle());
+        TextStyle(color: textColor, height: 1.8, fontSize: 18).merge(
+      descriptionTextStyle ?? TextStyle(),
+    );
     titleTextStyle = TextStyle(
             fontSize: 60.0,
-            color: Colors.black,
+            color: textColor,
             fontWeight: FontWeight.w400,
             textBaseline: TextBaseline.alphabetic,
             letterSpacing: -0.5)
@@ -57,12 +84,12 @@ class TemplateThemeData {
         backgroundColor: backgroundColor,
         descriptionTextStyle: descriptionTextStyle,
         buttonTheme: buttonTheme,
-        buttonTextStyle:buttonTextStyle,
-        buttonIconTheme:buttonIconTheme,
+        buttonTextStyle: buttonTextStyle,
+        buttonIconTheme: buttonIconTheme,
         frameTheme: frameTheme);
   }
 
-  TemplateThemeData.raw( {
+  TemplateThemeData.raw({
     this.flutterLogoColor,
     this.titleTextStyle,
     this.descriptionTextStyle,
@@ -153,5 +180,34 @@ class TemplateThemeData {
         ),
       ),
     );
+  }
+}
+
+enum FlutterLogoColor {
+  original,
+  white,
+  black,
+}
+
+extension FlutterLogoColorImage on FlutterLogoColor {
+  ImageProvider image() {
+    switch (this) {
+      case FlutterLogoColor.original:
+        return AssetImage(
+          'assets/flutter_original.png',
+          package: 'flutter_showcase',
+        );
+      case FlutterLogoColor.white:
+        return AssetImage(
+          'assets/flutter_white.png',
+          package: 'flutter_showcase',
+        );
+      case FlutterLogoColor.black:
+        return AssetImage(
+          'assets/flutter_black.png',
+          package: 'flutter_showcase',
+        );
+    }
+    return null;
   }
 }

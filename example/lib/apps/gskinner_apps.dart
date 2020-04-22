@@ -107,12 +107,11 @@ class _GskinnerApp {
 
 class GskinnerApps {
   static _GskinnerApp gooeyEdge = _GskinnerApp(
-    title: 'Mindfullness Gooey\nTransition',
+    title: 'Mindfullness Gooey Transition',
     description: '''
-Built by Gskinner
+Built by gskinner
 
 Three onboarding screens that introducing you to a mindfulness app. Swiping between three screens gives you a fluid transition from one screen to the next.
-
 Draw curved vector paths and use them to mask content. Utilizes a small physics simulation to calculate tension between a set of points.
     ''',
     githubUrl:
@@ -154,10 +153,9 @@ Draw curved vector paths and use them to mask content. Utilizes a small physics 
   static _GskinnerApp ticketFold = _GskinnerApp(
     title: 'Boarding Pass Cards',
     description: ''' 
-Built by Gskinner
-    
-All your boarding passes in one place, tapping them flips the card open to see more details about your flight.
+Built by gskinner
 
+All your boarding passes in one place, tapping them flips the card open to see more details about your flight.
 Uses the Transform widget to create a folding card effect. In this case a boarding pass with multiple folds, each fold containing a child widget.
     ''',
     githubUrl:
@@ -198,10 +196,9 @@ Uses the Transform widget to create a folding card effect. In this case a boardi
   static _GskinnerApp parallaxTravelCardsList = _GskinnerApp(
     title: 'Travel Cards',
     description: '''
-Built by Gskinner
-     
-Browse different destination cards from around the world and see hotel recommendations.
+Built by gskinner
 
+Browse different destination cards from around the world and see hotel recommendations.
 Use a Stack widget to create a parallax effect inside of a list, while also using a Transform to give it a 3D card effect.
     ''',
     githubUrl:
@@ -241,10 +238,9 @@ Use a Stack widget to create a parallax effect inside of a list, while also usin
   static _GskinnerApp productDetailZoom = _GskinnerApp(
     title: 'Product Zoom Transition',
     description: '''
-Built by Gskinner
-     
-Looking for the perfect speaker? Get a better look at the Classic Speaker 2700 by zooming in and discovering its great features.
+Built by gskinner
 
+Looking for the perfect speaker? Get a better look at the Classic Speaker 2700 by zooming in and discovering its great features.
 Example of an animated png sequence within a Hero animation; also uses a Canvas to render and animate a product detail overlay.
     ''',
     githubUrl:
@@ -292,10 +288,9 @@ Example of an animated png sequence within a Hero animation; also uses a Canvas 
   static _GskinnerApp indie3d = _GskinnerApp(
     title: 'Feature Artist Carousel.',
     description: '''
-Built by Gskinner
-     
-Explore three new indie artists, all with a distinct visual style applied to them.
+Built by gskinner
 
+Explore three new indie artists, all with a distinct visual style applied to them.
 Uses a custom 3D model renderer and blending mask to create a fun and unique background effect.
     ''',
     githubUrl:
@@ -309,10 +304,9 @@ Uses a custom 3D model renderer and blending mask to create a fun and unique bac
   static _GskinnerApp constellationsList = _GskinnerApp(
     title: 'Guide To the Stars Particles',
     description: ''' 
-Built by Gskinner
-    
-Learn about different constellations in the night sky. Tap on the names to travel through space and see what a constellation looks like.
+Built by gskinner
 
+Learn about different constellations in the night sky. Tap on the names to travel through space and see what a constellation looks like.
 Shows how to use an animated Canvas as the primary background for your app. In this case, a starfield effect that controls its animation speed based on user scrolling and page transitions.
     ''',
     githubUrl:
@@ -325,10 +319,9 @@ Shows how to use an animated Canvas as the primary background for your app. In t
   static _GskinnerApp bubbleTabBar = _GskinnerApp(
     title: 'Icon Flip Button Bar',
     description: '''
-Built by Gskinner
- 
-Flipping icons, revealing colors and text helps this button bar stand out.
+Built by gskinner
 
+Flipping icons, revealing colors and text helps this button bar stand out.
 Example of a bespoke NavigationBar with animated buttons that change size, shape, and color when selected.
     ''',
     githubUrl:
@@ -340,10 +333,9 @@ Example of a bespoke NavigationBar with animated buttons that change size, shape
   static _GskinnerApp dogSlider = _GskinnerApp(
       title: 'Dog Toy Slider',
       description: '''
-Built by Gskinner
-       
+Built by gskinner
+   
 Order your pup some more dog toys! Watch the dog chase the ball as you increase or decrease the amount of fetch balls you want to order.
-
 Use a Flare animation to create a custom Slider control. Creates a custom FlareControl class for playback while the slider itself is painted on a Canvas.
     ''',
       githubUrl:

@@ -1,10 +1,11 @@
+import 'dart:math';
+
 import 'package:fluid_layout/fluid_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inner_drawer/inner_drawer.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_showcase/flutter_showcase.dart';
-import 'package:flutter_showcase/src/showcase_template.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +17,8 @@ class SimpleTemplate extends Template {
   @override
   Widget builder({BuildContext context, TemplateData data, Widget app}) {
     final shouldDisplayTemplate = MediaQuery.of(context).size.width > 600;
-    final content = _Content(data: data);
+    Widget content =
+        isScreenshot ? _ScreenshotContent(data: data) : _Content(data: data);
     if (!shouldDisplayTemplate) {
       return AppWithDrawer(
         child: app,
@@ -24,17 +26,18 @@ class SimpleTemplate extends Template {
         theme: data.theme,
       );
     } else {
+      final sizedChild = Center(child: SizedBox(height: 896, child: content));
       final children = reverse == true
           ? [
               Flexible(
-                  flex: 1,
+                  flex: 2,
                   key: Key('Preview'),
                   child: Align(alignment: Alignment.centerRight, child: app)),
               SizedBox(width: 80),
-              Flexible(flex: 1, child: content),
+              Flexible(flex: 1, child: sizedChild),
             ]
           : [
-              Flexible(flex: 1, child: content),
+              Expanded(flex: 2, child: sizedChild),
               SizedBox(width: 80),
               Flexible(flex: 1, key: Key('Preview'), child: app),
             ];
@@ -44,8 +47,7 @@ class SimpleTemplate extends Template {
           child: Fluid(
             child: Builder(
               builder: (context) => Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: FluidLayout.of(context).horizontalPadding),
+                padding: EdgeInsets.symmetric(vertical: 40),
                 child: Material(
                   color: Colors.transparent,
                   child: Row(
@@ -83,6 +85,7 @@ class _Content extends StatelessWidget {
         ),
         SizedBox(height: 40),
         Expanded(
+          flex: 6,
           child: SingleChildScrollView(
             child: DefaultTextStyle(
               style: theme.descriptionTextStyle,
@@ -93,7 +96,6 @@ class _Content extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 40),
         if (data.links != null)
           Wrap(
             crossAxisAlignment: WrapCrossAlignment.start,
@@ -127,6 +129,55 @@ class _Content extends StatelessWidget {
                   child: _LogoLink(data: data.logoLink),
                 ),
               ),
+          ],
+        ),
+        SizedBox(height: 4),
+      ],
+    );
+  }
+}
+
+class _ScreenshotContent extends StatelessWidget {
+  final TemplateData data;
+
+  const _ScreenshotContent({Key key, this.data}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final TemplateThemeData theme = data.theme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        DefaultTextStyle(
+          style: theme.titleTextStyle,
+          child: Text(
+            data.title,
+            maxLines: 3,
+            textScaleFactor: 1.5,
+            overflow: TextOverflow.clip,
+          ),
+        ),
+        SizedBox(height: 40),
+        Expanded(
+          child: DefaultTextStyle(
+            style: theme.descriptionTextStyle,
+            child: Text(
+              data.description,
+              textScaleFactor: 1.5,
+              softWrap: true,
+            ),
+          ),
+        ),
+        SizedBox(height: 40),
+        Row(
+          children: <Widget>[
+            InkWell(
+              onTap: () => launch('https://flutter.dev'),
+              child: Image(
+                  image: (theme.flutterLogoColor ?? FlutterLogoColor.original)
+                      .image(),
+                  height: 80),
+            ),
           ],
         ),
         SizedBox(height: 20),
@@ -200,72 +251,126 @@ class AppWithDrawer extends StatefulWidget {
   State<StatefulWidget> createState() => _AppWithDrawerState();
 }
 
-class _AppWithDrawerState extends State<AppWithDrawer> {
+class _AppWithDrawerState extends State<AppWithDrawer>
+    with TickerProviderStateMixin {
   bool showInfoButton = true;
 
-  //  Current State of InnerDrawerState
-  final GlobalKey<InnerDrawerState> _innerDrawerKey =
-      GlobalKey<InnerDrawerState>();
+  AnimationController animationController;
 
-  void _toggle() {
-    _innerDrawerKey.currentState.toggle(direction: InnerDrawerDirection.end);
+  @override
+  void initState() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+    super.initState();
+  }
+
+  _toggle() {
+    if (animationController.value == 0) {
+      animationController.forward();
+    } else {
+      animationController.animateBack(0);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = widget.theme;
+    final size = MediaQuery.of(context).size;
 
-    return InnerDrawer(
+    final app = GestureDetector(
+        onTap: () => setState(() => showInfoButton = !showInfoButton),
+        child: Scaffold(
+          body: Stack(
+            fit: StackFit.expand,
+            children: [
+              widget.child,
+              AnimatedPositioned(
+                duration: Duration(milliseconds: 300),
+                right: showInfoButton ? 0 : -60,
+                bottom: 60,
+                width: 60,
+                height: 60,
+                child: InkWell(
+                  onTap: () => _toggle(),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            left: BorderSide(color: theme.titleTextStyle.color),
+                            top: BorderSide(color: theme.titleTextStyle.color),
+                            bottom:
+                                BorderSide(color: theme.titleTextStyle.color)),
+                        color: theme.backgroundColor,
+                        boxShadow: []),
+                    padding: EdgeInsets.all(20),
+                    child: Icon(
+                      FontAwesomeIcons.info,
+                      color: theme.titleTextStyle.color,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ));
+
+    return Container(
+      color: theme.backgroundColor,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          GestureDetector(
+            onTap: () => _toggle(),
+            child: Container(
+              color: theme.backgroundColor,
+              child: widget.drawer,
+              padding:
+                  EdgeInsets.only(left: 80, top: 40, right: 20, bottom: 40),
+            ),
+          ),
+          AnimatedBuilder(
+            animation: animationController,
+            builder: (context, child) {
+              final t = animationController.value;
+              final scale = 1 - 0.2 * t;
+              Matrix4 matrix = Matrix4.identity()
+                ..setEntry(3, 2, 0.001)
+                ..rotateY(-pi / 10 * t)
+                ..scale(scale, scale, scale)
+                ..translate(-size.width * t, 0, 0);
+
+              return Transform(
+                transform: matrix,
+                origin: size.center(Offset.zero),
+                child: Container(
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.black45, blurRadius: 12)
+                  ]),
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(24.7 * animationController.value),
+                    clipBehavior: Clip.antiAlias,
+                    child: child,
+                  ),
+                ),
+              );
+            },
+            child: app,
+          )
+        ],
+      ),
+    );
+    /* return InnerDrawer(
       key: _innerDrawerKey,
       scale: IDOffset.horizontal(0.8),
       borderRadius: 27,
       onTapClose: true,
       offset: IDOffset.only(right: 0.9),
       backgroundColor: theme.backgroundColor,
-      rightChild: GestureDetector(
-        onTap: () => _toggle(),
-        child: Padding(
-          child: widget.drawer,
-          padding: EdgeInsets.all(20),
-        ),
-      ),
-      scaffold: GestureDetector(
-          onTap: () => setState(() => showInfoButton = !showInfoButton),
-          child: Scaffold(
-            body: Stack(
-              fit: StackFit.expand,
-              children: [
-                widget.child,
-                AnimatedPositioned(
-                  duration: Duration(milliseconds: 300),
-                  right: showInfoButton ? 0 : -60,
-                  bottom: 60,
-                  width: 60,
-                  height: 60,
-                  child: InkWell(
-                    onTap: () => _toggle(),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              left:
-                                  BorderSide(color: theme.titleTextStyle.color),
-                              top:
-                                  BorderSide(color: theme.titleTextStyle.color),
-                              bottom: BorderSide(
-                                  color: theme.titleTextStyle.color)),
-                          color: theme.backgroundColor,
-                          boxShadow: []),
-                      padding: EdgeInsets.all(20),
-                      child: Icon(
-                        FontAwesomeIcons.info,
-                        color: theme.titleTextStyle.color,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )),
-    );
+      rightChild:
+      scaffold
+      :,
+    );*/
   }
 }

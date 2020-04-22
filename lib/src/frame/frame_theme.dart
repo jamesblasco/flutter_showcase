@@ -2,10 +2,17 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Defines the theme of the device frame
+/// that wraps the app
+///
+/// [frameColor] allows to personalize the color of the device frame
+/// [statusBarBrightness] sets the status bar to white/black
+///
+///
 class FrameThemeData implements Equatable {
   final Color frameColor;
-  final Brightness statusBarBrightness;
 
+  final Brightness statusBarBrightness;
 
   // const FrameThemeData({this.frameColor, this.statusBarBrightness});
   factory FrameThemeData({Color frameColor, Brightness statusBarBrightness}) {

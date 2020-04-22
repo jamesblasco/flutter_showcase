@@ -1,13 +1,24 @@
 import 'dart:io';
+import 'package:args/args.dart';
+
 import 'common/directory.dart';
 import 'common/html_generator.dart';
 import 'common/social_metadata.dart';
 import 'screenshot.dart';
 
+bool _useSkia = true;
+
 Future<void> main(List<String> args) async {
+  final parser = ArgParser();
+  parser.addOption('title');
+  parser.addOption('github_url');
+  parser.addOption('description');
+  parser.addOption('FLUTTER_WEB_USE_SKIA');
+  final results = parser.parse(args);
+  _useSkia = results['FLUTTER_WEB_USE_SKIA'] ?? true;
   /*final Status status = globals.logger.startProgress('Compiling profile for the Web...', timeout: null);*/
 
-  final socialMetadata = await generateMetadata();
+  final socialMetadata = generateMetadata();
 
   await flutterBuildShowcase();
   try {
@@ -19,9 +30,7 @@ Future<void> main(List<String> args) async {
   generateHtmlFile(socialMetadata);
 }
 
-
 Future flutterBuildShowcase() async {
-
   Directory('build/web_old')..removeIfExistsSync();
   Directory('build/web')..renameIfExistsSync('build/web_old');
 
@@ -30,11 +39,10 @@ Future flutterBuildShowcase() async {
     [
       'build',
       'web',
-    //  '--dart-define=FLUTTER_WEB_USE_SKIA=true',
+      '--dart-define=FLUTTER_WEB_USE_SKIA=${_useSkia ? 'true' :'false'}',
       '--dart-define=FLUTTER_SHOWCASE=true',
     ],
   );
-
 
   stdout.addStream(process.stdout);
   stderr.addStream(process.stderr);

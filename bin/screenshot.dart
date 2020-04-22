@@ -36,13 +36,14 @@ Future takeScreenshot({String browser = 'chrome'}) async {
       '--browser-name=$browser',
       '-dweb-server',
       '--release',
+      '--dart-define=SCREENSHOT_MODE=true',
       '--dart-define=FLUTTER_SHOWCASE=true'
     ],
   );
 
   await stdout.addStream(screenshotProccess.stdout);
   await stderr.addStream(screenshotProccess.stderr);
-  print('test');
+
   await screenshotProccess.exitCode;
 
   driver.close();
@@ -72,7 +73,7 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
 void main()  {
-  group('Counter App', ()  {
+  group('Flutter Showcase', ()  {
     // First, define the Finders and use them to locate widgets from the
     // test suite. Note: the Strings provided to the `byValueKey` method must
     // be the same as the Strings we used for the Keys in step 1.
@@ -98,7 +99,7 @@ void main()  {
 
     test('screenshot', () async {
       final image  = await driver.screenshot();
-      var fileCopy = await File('build/web_showcase/icons/image.png').writeAsBytes(image);
+      var fileCopy = await File('build/web_showcase/social_media.png').writeAsBytes(image);
     });
 
 

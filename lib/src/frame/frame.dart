@@ -4,6 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_showcase/flutter_showcase.dart';
 import 'package:flutter_showcase/src/frame/frame_theme.dart';
 
+class FrameBuilder extends StatelessWidget {
+  final Widget app;
+  final TransitionBuilder builder;
+  const FrameBuilder({
+    this.app,
+    this.builder,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Frame(
+      app: builder(context, app),
+    );
+  }
+}
+
 class Frame extends StatelessWidget {
   final Widget app;
 
@@ -13,7 +29,7 @@ class Frame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(!isShowcaseActive) {
+    if (!isShowcaseActive) {
       return app;
     }
     final theme = DefaultFrameTheme.of(context).data;

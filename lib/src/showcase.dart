@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_showcase/src/frame/frame.dart';
 import 'package:flutter_showcase/src/frame/frame_theme.dart';
-import 'package:flutter_showcase/src/showcase_template.dart';
-import 'package:flutter_showcase/src/template/templates.dart';
-import 'package:flutter_showcase/src/theme.dart';
+import 'package:flutter_showcase/src/templates/templates.dart';
+import 'package:flutter_showcase/src/core/theme.dart';
 
 import '../flutter_showcase.dart';
 
 const isShowcaseActive =
     bool.fromEnvironment('FLUTTER_SHOWCASE', defaultValue: true);
+
+const isScreenshot =
+    bool.fromEnvironment('SCREENSHOT_MODE', defaultValue: false);
 
 typedef AppBuilder = Widget Function(BuildContext context, Widget app);
 

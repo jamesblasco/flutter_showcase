@@ -6,31 +6,41 @@ class SocialMetadata  {
   final String description;
   final String url;
 
-  SocialMetadata(this.title, this.description, this.url);
+  SocialMetadata({this.title, this.description, this.url});
 
   @override
   String toString() => 'SocialMetadata:\n $title,\n $description, \n$url';
 }
 
 
-Future<SocialMetadata> generateMetadata() async {
-  String content = File('pubspec.yaml').readAsStringSync();
+SocialMetadata generateMetadata()  {
+  try {
+    String content = File('pubspec.yaml').readAsStringSync();
 
-  final doc = loadYaml(content);
+    final doc = loadYaml(content);
 
-  if(doc is YamlMap) {
-    final successNode = doc['showcase'];
-    if(successNode is YamlMap) {
-      final String  title = successNode['title'];
-      final String  description = successNode['description'];
-      final String  url = successNode['url'];
+    String title;
+    String description;
+    String url;
 
-      return SocialMetadata(title, description, url);
+    if (doc is YamlMap) {
+      final showcaseNode = doc['showcase'];
+      if (showcaseNode is YamlMap) {
+        title = showcaseNode['title'];
+        description = showcaseNode['description'];
+        url = showcaseNode['url'];
+      }
+
     } else {
-      print('no showcase $successNode');
+      print('no map $doc');
     }
-  } else {
-    print('no map $doc');
+
+    title ??= doc['name'];
+    description ??= doc['description'];
+
+    return SocialMetadata(title: title, description: description, url: url);
+  } catch (e) {
+    stderr.writeln('Error while parsion social metadata');
+    throw(e);
   }
-  return null;
 }
