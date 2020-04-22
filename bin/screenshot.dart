@@ -1,12 +1,10 @@
 import 'dart:io';
 
-
-
 import 'common/common.dart';
 import 'common/directory.dart';
 import 'common/web_driver.dart';
 
-const _appFilePath =  'showcase/src/app.dart';
+const _appFilePath = 'showcase/src/app.dart';
 const _appTestFilePath = 'showcase/src/app_test.dart';
 
 Future takeScreenshot({String browser = 'chrome'}) async {
@@ -18,9 +16,12 @@ Future takeScreenshot({String browser = 'chrome'}) async {
   ];
 
   WebDriver driver;
-  if(browser == 'chrome') driver = ChromeDriver();
-  else if(browser  == 'safari') driver = SafariDriver();
-  else throwToolExit('$browser is not supported');
+  if (browser == 'chrome')
+    driver = ChromeDriver();
+  else if (browser == 'safari')
+    driver = SafariDriver();
+  else
+    throwToolExit('$browser is not supported');
 
   print('before start');
   await driver.start();

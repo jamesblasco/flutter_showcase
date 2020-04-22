@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'social_metadata.dart';
@@ -8,31 +7,28 @@ void generateHtmlFile(SocialMetadata socialMetadata) {
   File('build/web_showcase/index.html')..writeAsStringSync(template);
 }
 
-
-
-String _template(SocialMetadata socialMetadata) =>
-    '''
+String _template(SocialMetadata socialMetadata) => '''
     <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <!-- Primary Meta Tags -->
-  <title>${socialMetadata.title?? ''}</title>
-  <meta name="title" content="${socialMetadata.title?? ''}">
-  <meta name="description" content="${socialMetadata.description?? ''}">
+  <title>${socialMetadata.title ?? ''}</title>
+  <meta name="title" content="${socialMetadata.title ?? ''}">
+  <meta name="description" content="${socialMetadata.description ?? ''}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="${socialMetadata.url?? ''}">
-  <meta property="og:title" content="${socialMetadata.title?? ''}">
-  <meta property="og:description" content="${socialMetadata.description?? ''}">
+  <meta property="og:url" content="${socialMetadata.url ?? ''}">
+  <meta property="og:title" content="${socialMetadata.title ?? ''}">
+  <meta property="og:description" content="${socialMetadata.description ?? ''}">
   <meta property="og:image" content="./social_media.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="${socialMetadata.url?? ''}">
-  <meta property="twitter:title" content="${socialMetadata.title?? ''}">
+  <meta property="twitter:url" content="${socialMetadata.url ?? ''}">
+  <meta property="twitter:title" content="${socialMetadata.title ?? ''}">
   <meta property="twitter:description" content="${socialMetadata.description ?? ''}">
   <meta property="og:image" content="./social_media.png">
 

@@ -1,28 +1,23 @@
-
-
-
- import 'dart:io';
+import 'dart:io';
 
 extension DirectoryUtils on Directory {
-
-  Future<Directory>renameIfExists(String name) async {
+  Future<Directory> renameIfExists(String name) async {
     if (await this.exists()) {
-     return  await this.rename(name);
+      return await this.rename(name);
     }
     return this;
   }
 
   Directory renameIfExistsSync(String name) {
     if (existsSync()) {
-      return  this.renameSync(name);
+      return this.renameSync(name);
     }
     return this;
   }
 
-
   Future<Directory> createIfNotExist() async {
     if (!(await this.exists())) {
-      return  await this.create(recursive: true);
+      return await this.create(recursive: true);
     }
     return this;
   }
@@ -33,9 +28,7 @@ extension DirectoryUtils on Directory {
     }
   }
 
-
-
-  Future<void>removeIfExists() async {
+  Future<void> removeIfExists() async {
     if (await exists()) {
       await delete(recursive: true);
     }
@@ -46,4 +39,4 @@ extension DirectoryUtils on Directory {
       deleteSync(recursive: true);
     }
   }
- }
+}

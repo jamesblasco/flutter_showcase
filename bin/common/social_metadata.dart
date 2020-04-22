@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:yaml/yaml.dart';
 
-class SocialMetadata  {
+class SocialMetadata {
   final String title;
   final String description;
   final String url;
@@ -12,8 +12,7 @@ class SocialMetadata  {
   String toString() => 'SocialMetadata:\n $title,\n $description, \n$url';
 }
 
-
-SocialMetadata generateMetadata()  {
+SocialMetadata generateMetadata() {
   try {
     String content = File('pubspec.yaml').readAsStringSync();
 
@@ -30,7 +29,6 @@ SocialMetadata generateMetadata()  {
         description = showcaseNode['description'];
         url = showcaseNode['url'];
       }
-
     } else {
       print('no map $doc');
     }
@@ -41,6 +39,6 @@ SocialMetadata generateMetadata()  {
     return SocialMetadata(title: title, description: description, url: url);
   } catch (e) {
     stderr.writeln('Error while parsion social metadata');
-    throw(e);
+    throw (e);
   }
 }

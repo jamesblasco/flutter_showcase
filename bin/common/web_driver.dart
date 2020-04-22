@@ -1,6 +1,5 @@
 import 'dart:io';
 
-
 abstract class WebDriver {
   Process process;
 
@@ -42,5 +41,3 @@ class SafariDriver extends WebDriver {
         '--port=4444',
       ];
 }
-
-

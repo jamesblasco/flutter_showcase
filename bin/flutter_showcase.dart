@@ -39,7 +39,7 @@ Future flutterBuildShowcase() async {
     [
       'build',
       'web',
-      '--dart-define=FLUTTER_WEB_USE_SKIA=${_useSkia ? 'true' :'false'}',
+      '--dart-define=FLUTTER_WEB_USE_SKIA=${_useSkia ? 'true' : 'false'}',
       '--dart-define=FLUTTER_SHOWCASE=true',
     ],
   );

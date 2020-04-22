@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:analyzer/analyzer.dart';
+import 'package:analyzer/src/dart/ast/utilities.dart';
 import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/ast/standard_ast_factory.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
@@ -32,17 +32,16 @@ void main(List<String> args) {
     throw (e);
   }
 
-  Map<String, String> linksFromEncodedJson(String  links) {
-    if(links == null) return {};
+  Map<String, String> linksFromEncodedJson(String links) {
+    if (links == null) return {};
 
     try {
       var codedLinks = links;
-      if(links.startsWith('"') && links.endsWith('"')) {
-        codedLinks = links.substring(1, links.length -1);
+      if (links.startsWith('"') && links.endsWith('"')) {
+        codedLinks = links.substring(1, links.length - 1);
       }
-        final json  = jsonDecode(codedLinks);
-        return Map<String, String>.from(json);
-
+      final json = jsonDecode(codedLinks);
+      return Map<String, String>.from(json);
     } catch (e) {
       print(e);
       return {};
@@ -54,7 +53,7 @@ void main(List<String> args) {
       title: results['title'],
       description: results['description'],
       githubUrl: results['github_url'],
-      links: linksFromEncodedJson( results['links']),
+      links: linksFromEncodedJson(results['links']),
     ).generate(path: directoryPath);
   } catch (e) {
     stderr.writeln(
@@ -174,8 +173,8 @@ class ProjectGenerator {
      title: $title,
      description: $description,
      links: [
-       ${githubUrl != null ? 'LinkData.github(\'$githubUrl\'),' :''}
-       ${links['pub'] != null ? 'LinkData.pub(\'${links['pub']}\'),' :''}
+       ${githubUrl != null ? 'LinkData.github(\'$githubUrl\'),' : ''}
+       ${links['pub'] != null ? 'LinkData.pub(\'${links['pub']}\'),' : ''}
      ],
      app: $s)
   ''';
@@ -263,7 +262,6 @@ class AddShowcaseVisitor extends RecursiveAstVisitor {
       final NodeReplacer replacer = NodeReplacer(widget, ssl);
       widget.parent.accept(replacer);
     }
-
   }
 
   SimpleStringLiteral _createSimpleStringLiteral(AstNode node) {
