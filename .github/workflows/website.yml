@@ -11,16 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'dev'
-      - run: |
+      - name: Install Flutter
+        if: steps.cache-flutter.outputs.cache-hit != 'true'
+        run: |
+          cd src/
+          git clone -b master https://github.com/flutter/flutter.git
+          cd ../
+          echo "::add-path::$GITHUB_WORKSPACE/src/flutter/bin"
+          echo "::add-path::$GITHUB_WORKSPACE/src/flutter/bin/cache/dart-sdk/bin"
+          ./src/flutter/bin/flutter doctor
+      - name: Get packages    
+        run: |
           cd example
           flutter config --enable-web
           flutter pub get
-      - run: |
+      - name: Build Showcase Example    
+        run: |
          cd example
-         flutter pub run flutter_showcase build --FLUTTER_WEB_USE_SKIA="false"
+         flutter pub run flutter_showcase build
+      - name: Upload showcase to Github Pages    
       - run: |
           cd example/build/web_showcase
           git init
