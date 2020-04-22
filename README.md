@@ -5,12 +5,20 @@
 
 # Flutter Showcase
 
+
+<a href="https://jamesblasco.github.io/flutter_showcase/"> <img align="right"  width= 200 src="https://github.com/jamesblasco/flutter_showcase/blob/master/mobile.png?raw=true"/></a>
+
 Flutter Showcase is a project that helps you share flutter your project online. 
 While building your project as a website is enough, this package aims to empower your demo.
 
-Flutter Showcase can have different appareances. Right now there is only SimpleTemplate
+
+Flutter Showcase can have different appareances, actionable links and social metadata.
+
+> Right now there is only SimpleTemplate
 but the goal is to provide multiple options to share your project so you can choose the one that 
 fits for you.
+
+Check the [web demo](https://jamesblasco.github.io/flutter_showcase/)
 
 ## Getting Started
 
