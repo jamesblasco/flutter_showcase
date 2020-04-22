@@ -1,7 +1,6 @@
 # Flutter Showcase
 
-A simple, fast and easy way to share you flutter project or mockups with the world.
-
+A simple, fast and easy way to share you flutter project or mockups with the world. [Demo](https://jamesblasco.github.io/flutter_showcase/)
 
 <a href="https://jamesblasco.github.io/flutter_showcase/"> <img   src="https://github.com/jamesblasco/flutter_showcase/blob/master/preview.gif?raw=true"/></a>
 
